@@ -1,0 +1,88 @@
+Started by user admin
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/delivery-monitoring-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Pre-check Docker)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Checking Docker environment...
+[Pipeline] sh
++ docker --version
+[Pipeline] echo
+Docker CLI found: Docker version 26.1.5+dfsg1, build a72d7cd
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Setup Workspace)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Setting up workspace and verifying local files...
+[Pipeline] sh
++ echo Creating workspace directories and manifests...
+Creating workspace directories and manifests...
++ mkdir -p config
++ echo delivery_service: 8000
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Packaging delivery application image...
+[Pipeline] sh
++ echo Successfully simulated build: delivery_metrics:latest
+Successfully simulated build: delivery_metrics:latest
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Application)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Verifying Delivery Service metrics endpoint...
+[Pipeline] sh
++ curl -s http://host.docker.internal:8000/metrics
++ head -n 5
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 622.0
+python_gc_objects_collected_total{generation="1"} 5.0
+python_gc_objects_collected_total{generation="2"} 0.0
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Prometheus & Grafana)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] echo
+Verifying Prometheus and Grafana health...
+[Pipeline] sh
++ curl -s http://host.docker.internal:9090/-/healthy
+Prometheus Server is Healthy.
++ curl -s http://host.docker.internal:3000/api/health
+{
+  "database": "ok",
+  "version": "13.2.4",
+  "commit": "0e79aef9d91abf3bdadae9af15763029072fb45b"
+}
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

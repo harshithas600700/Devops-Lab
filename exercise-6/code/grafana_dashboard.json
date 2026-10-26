@@ -1,0 +1,295 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "delivery-monitoring",
+    "title": "Delivery Operations Monitoring",
+    "tags": ["delivery", "prometheus", "zapptto"],
+    "timezone": "browser",
+    "editable": true,
+    "graphTooltip": 1,
+    "refresh": "5s",
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "gridPos": { "h": 5, "w": 6, "x": 0, "y": 0 },
+        "type": "stat",
+        "title": "Total Deliveries",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cg26kxn4fdfr4e"
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "total_deliveries",
+            "legendFormat": "Total Deliveries",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"]
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "color": "blue", "value": null }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        }
+      },
+      {
+        "id": 2,
+        "gridPos": { "h": 5, "w": 6, "x": 6, "y": 0 },
+        "type": "stat",
+        "title": "Pending Deliveries",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cg26kxn4fdfr4e"
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "pending_deliveries",
+            "legendFormat": "Pending Deliveries",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"]
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "color": "green", "value": null },
+                { "color": "red", "value": 10 }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        }
+      },
+      {
+        "id": 3,
+        "gridPos": { "h": 5, "w": 6, "x": 12, "y": 0 },
+        "type": "stat",
+        "title": "On-the-Way Deliveries",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cg26kxn4fdfr4e"
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "on_the_way_deliveries",
+            "legendFormat": "On The Way",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"]
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "color": "orange", "value": null }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        }
+      },
+      {
+        "id": 4,
+        "gridPos": { "h": 5, "w": 6, "x": 18, "y": 0 },
+        "type": "stat",
+        "title": "Average Delivery Time",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cg26kxn4fdfr4e"
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "average_delivery_time_sum / average_delivery_time_count",
+            "legendFormat": "Avg Time",
+            "refId": "A"
+          }
+        ],
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": ["lastNotNull"]
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "color": "green", "value": null },
+                { "color": "red", "value": 30 }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        }
+      },
+      {
+        "id": 5,
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 5 },
+        "type": "timeseries",
+        "title": "Deliveries Overview Trend",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cg26kxn4fdfr4e"
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "total_deliveries",
+            "legendFormat": "Total Deliveries",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "pending_deliveries",
+            "legendFormat": "Pending Deliveries",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "on_the_way_deliveries",
+            "legendFormat": "On The Way Deliveries",
+            "refId": "C"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 15,
+              "gradientMode": "opacity"
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        }
+      },
+      {
+        "id": 6,
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 5 },
+        "type": "timeseries",
+        "title": "Average Delivery Time Trend",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "cg26kxn4fdfr4e"
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "cg26kxn4fdfr4e"
+            },
+            "expr": "average_delivery_time_sum / average_delivery_time_count",
+            "legendFormat": "Average Delivery Time (s)",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "smooth",
+              "lineWidth": 2,
+              "fillOpacity": 20,
+              "gradientMode": "opacity",
+              "thresholdsStyle": {
+                "mode": "line"
+              }
+            },
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                { "color": "green", "value": null },
+                { "color": "red", "value": 30 }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        }
+      }
+    ],
+    "schemaVersion": 38,
+    "version": 1
+  },
+  "overwrite": true
+}
