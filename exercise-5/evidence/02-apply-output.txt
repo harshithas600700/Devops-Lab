@@ -1,0 +1,22 @@
+Building image...
+Traceback (most recent call last):
+  File "/home/ubuntu/exercise-3/apply_apparmor.py", line 6, in <module>
+    client.images.build(path=".", tag="flask-apparmor")
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.local/lib/python3.14/site-packages/docker/models/images.py", line 296, in build
+    resp = self.client.api.build(**kwargs)
+  File "/home/ubuntu/.local/lib/python3.14/site-packages/docker/api/build.py", line 159, in build
+    context = utils.tar(
+        path, exclude=exclude, dockerfile=dockerfile, gzip=gzip
+    )
+  File "/home/ubuntu/.local/lib/python3.14/site-packages/docker/utils/build.py", line 36, in tar
+    files=sorted(exclude_paths(root, exclude, dockerfile=dockerfile[0])),
+                 ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.local/lib/python3.14/site-packages/docker/utils/build.py", line 55, in exclude_paths
+    return set(pm.walk(root))
+  File "/home/ubuntu/.local/lib/python3.14/site-packages/docker/utils/build.py", line 217, in rec_walk
+    yield from rec_walk(cur)
+  File "/home/ubuntu/.local/lib/python3.14/site-packages/docker/utils/build.py", line 187, in rec_walk
+    for f in os.listdir(current_dir):
+             ~~~~~~~~~~^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/home/ubuntu/exercise-3/evidence'
