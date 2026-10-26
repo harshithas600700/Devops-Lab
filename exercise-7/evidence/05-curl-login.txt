@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Server: Jetty(12.1.13)
+Date: Mon, 26 Oct 2026 00:17:17 GMT
+X-Content-Type-Options: nosniff
+Reporting-Endpoints: content-security-policy: http://localhost:8080/content-security-policy-reporting-endpoint/0JAKSfhgko26Dm4faFgqhWhe39BeIQx9EOeC5Y1XTRs=:YW5vbnltb3Vz:aHVkc29uLm1vZGVsLkh1ZHNvbg==:bG9naW4=
