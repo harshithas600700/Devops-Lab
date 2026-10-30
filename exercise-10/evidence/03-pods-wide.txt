@@ -1,0 +1,6 @@
+NAME                             READY   STATUS    RESTARTS   AGE     IP           NODE                   NOMINATED NODE   READINESS GATES
+product-catalog-7cb85d4f-5998h   1/1     Running   0          8m28s   10.244.1.3   devops-multinode-m02   <none>           <none>
+product-catalog-7cb85d4f-xc9ch   1/1     Running   0          8m28s   10.244.3.2   devops-multinode-m03   <none>           <none>
+shopping-cart-6858b5f797-92hsj   1/1     Running   0          8m28s   10.244.1.2   devops-multinode-m02   <none>           <none>
+shopping-cart-6858b5f797-ps67q   1/1     Running   0          8m28s   10.244.0.3   devops-multinode       <none>           <none>
+shopping-cart-6858b5f797-szr8l   1/1     Running   0          8m28s   10.244.3.3   devops-multinode-m03   <none>           <none>

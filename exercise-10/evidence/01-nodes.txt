@@ -1,0 +1,4 @@
+NAME                   STATUS   ROLES           AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION            CONTAINER-RUNTIME
+devops-multinode       Ready    control-plane   20m   v1.37.0   192.168.49.2   <none>        Debian GNU/Linux 12 (bookworm)   7.0.14-linuxkit (arm64)   containerd://2.3.4
+devops-multinode-m02   Ready    <none>          19m   v1.37.0   192.168.49.3   <none>        Debian GNU/Linux 12 (bookworm)   7.0.14-linuxkit (arm64)   containerd://2.3.4
+devops-multinode-m03   Ready    <none>          19m   v1.37.0   192.168.49.4   <none>        Debian GNU/Linux 12 (bookworm)   7.0.14-linuxkit (arm64)   containerd://2.3.4
